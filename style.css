@@ -1,0 +1,53 @@
+* {
+    margin:0;
+    padding: 0;
+    font-size: 1.1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 3fr 10fr;
+    font-family: Arial;
+    color: #00ff00;
+    background-color: #000000;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.preference{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 20px;
+}
+
+.data {
+    margin: 20px; 
+}
+
+.field {
+    height: 100vh;
+    width: 100vh;
+    margin: 0 auto;
+    border: solid 1px #003a00;
+}
+
+button {
+    width: 300px;
+    background-color: #00ff00;
+    font-weight: 900;
+    display: block;
+    margin: 1px auto;
+}
+
+input {
+    width: 300px;
+    background-color: #94dd94;
+    display: block;
+    margin: 0 auto;
+}
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Game of life</title>
+</head>
+<body>
+    <section class="container">
+        <aside class="panel">
+            <h2>ЖИЗНЬ</h2>
+
+            <div class="preference">    
+                <label for="set_size">Установить размер поля</label>
+                <input type="number" name="set_size" id="setSize" value="100"/>
+                <button id="sizeBtn" class="button">Применить</button>
+                <br>
+                <label for="set_speed">Установить продолжительность цикла</label>
+                <input type="number" name="set_speed" id="setSpeed" value="300"/>
+                <button id="speedBtn" class="button">Применить</button>    
+            </div>
+
+            <div class="data">
+                <p>Поколение: <span id="generation">0</span></p> 
+                <p>Размер поля: <span id="size">100x100</span></p>
+                <p>ЦиклG (мс): <span id="speed">300</span></p>
+            </div>
+
+            <div class="data">
+            <button id="clearBtn" class="button">Очистить поле</button>
+            <button id="randomBtn" class="button">Заполнить поле</button>
+            <button id="startBtn" class="button">ПУСК</button>
+            <button id="stopBtn" class="button">СТОП</button>
+            </div>
+        </aside>
+        <section class="field">
+            <canvas id="canvas"></canvas>
+        </section>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>
