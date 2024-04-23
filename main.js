@@ -16,24 +16,26 @@ canvas.size = window.innerHeight;
 canvas.height = canvas.width = +canvas.size;
 
 let count = 0;
-let fieldSize = 100;
+let fieldSize = 300;
 let paintFlag = false;
 let genFlag = false;
 let gridSize = canvas.size / fieldSize;
 let grid = [];
-let expectancy = 300;
+let prevGrid = [];
+let expectancy = 100;
 
 const drawGrid = () => {
     ctx.clearRect(0, 0, canvas.size, canvas.size);
     for (let i = 0; i < fieldSize; i++) {
         for (let j = 0; j < fieldSize; j++) {
             const index = i * fieldSize + j;
-            if (grid[index]) {
+            if (grid[index] && grid[index] !== prevGrid[index]) {
                 ctx.fillStyle = "#00ff00";
                 ctx.fillRect(j * gridSize, i * gridSize, gridSize, gridSize);
             }
         }
     }
+    prevGrid = grid.slice();
 }
 
 const getNextGeneration = () => {
@@ -48,6 +50,7 @@ const getNextGeneration = () => {
             newGrid[i] = neighbors == 3;
         }
     }
+    prevGrid = grid.slice();
     grid = newGrid;
     count++;
     generation.innerText = `${count}`;
@@ -91,7 +94,7 @@ randomBtn.addEventListener('click', () => {
     count = 0;
     generation.innerText = `${count}`;
     let k;
-    (fieldSize > 1000 || expectancy < 200) ? k = 0.1 : k = 0.2
+    (fieldSize > 1000 || expectancy < 100) ? k = 0.1 : k = 0.2
     grid = [...Array(fieldSize * fieldSize)].map(()=>~~(Math.random()< k));
     drawGrid();
 });
@@ -131,7 +134,8 @@ canvas.addEventListener('mousemove', (e) => {
     y = Math.floor(y/gridSize);
     const index = y * fieldSize + x;
     grid[index] = 1;
-    drawGrid();
+    ctx.fillStyle = "#00ff00";
+    ctx.fillRect(x * gridSize, y * gridSize, gridSize, gridSize);  
 }});
 canvas.addEventListener('mouseup', () => {
     paintFlag = false;
